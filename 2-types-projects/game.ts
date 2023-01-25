@@ -1,32 +1,26 @@
 /**
  * Let's make a game 🕹
  */
-type Position = {
-  x: number;
-  y: number;
-};
-
-const position: Position = { x: 0, y: 0 };
+const position = { x: 0, y: 0 };
 
 type Direction = "up" | "down" | "left" | "right";
 
-function move(direction: Direction): Object {
+function move(direction: Direction) {
   switch (direction) {
     case "up":
       position.y += 1;
-      return position;
+      break;
     case "down":
       position.y -= 1;
-      return position;
+      break;
     case "left":
       position.x -= 1;
-      return position;
+      break;
     case "right":
       position.x += 1;
-      return position;
+      break;
     default:
-      console.log("Incorrect Direction");
-      return position;
+      throw new Error(`Incorrect Direction: ${direction}`);
   }
 }
 
