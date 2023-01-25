@@ -1,15 +1,26 @@
 // Imperative and Procedural Programming (IPP)
+{
+  type CoffeeCup = {
+    shots: number;
+    hasMilk: boolean;
+  };
 
-const coffeeBean = 1000;
+  const BEANS_GRAM_PER_SHOT: number = 7;
 
-function makeCoffee(shots: number) {
-  let density = 0;
-  if (coffeeBean - 100 * shots >= 0) {
-    density += (100 * shots) / 250;
-    return density * 100;
+  let coffeeBeans: number = 0;
+  function makeCoffee(shots: number): CoffeeCup {
+    if (coffeeBeans < shots * BEANS_GRAM_PER_SHOT) {
+      throw new Error("Not enough coffee beans!");
+    }
+    coffeeBeans -= shots * BEANS_GRAM_PER_SHOT;
+    return {
+      shots,
+      hasMilk: false,
+    };
   }
-}
 
-console.log(makeCoffee(1));
-console.log(makeCoffee(2));
-console.log(makeCoffee(3));
+  coffeeBeans += 3 * BEANS_GRAM_PER_SHOT;
+
+  const coffee = makeCoffee(2);
+  console.log(coffee);
+}
