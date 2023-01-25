@@ -21,12 +21,18 @@
   type ResourceLoadState = LoadingState | SuccessState | FailState;
 
   function printLoginState(state: ResourceLoadState) {
-    if (state.state === "loading") {
-      console.log("👀 loading...");
-    } else if (state.state === "success") {
-      console.log("😃 loaded");
-    } else if (state.state === "fail") {
-      console.log("😱 no network");
+    switch (state.state) {
+      case "loading":
+        console.log("👀 loading...");
+        break;
+      case "success":
+        console.log(`😃 ${state.response.body}`);
+        break;
+      case "fail":
+        console.log(`😱 ${state.reason}`);
+        break;
+      default:
+        throw new Error(`Unknown State: ${state}`);
     }
   }
 
