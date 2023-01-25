@@ -2,21 +2,21 @@
  * Let's make a calculator 🧮
  */
 type Operator = "add" | "substract" | "multiply" | "divide" | "remainder";
-function calculate(
-  operator: Operator,
-  num1: number,
-  num2: number
-): number | undefined {
-  if (operator === "add") {
-    return num1 + num2;
-  } else if (operator === "substract") {
-    return num1 - num2;
-  } else if (operator === "multiply") {
-    return num1 * num2;
-  } else if (operator === "divide") {
-    return num1 / num2;
-  } else if (operator === "remainder") {
-    return num1 % num2;
+
+function calculate(operator: Operator, num1: number, num2: number): number {
+  switch (operator) {
+    case "add":
+      return num1 + num2;
+    case "substract":
+      return num1 - num2;
+    case "multiply":
+      return num1 * num2;
+    case "divide":
+      return num1 / num2;
+    case "remainder":
+      return num1 % num2;
+    default:
+      throw new Error("Unknown Operator");
   }
 }
 
