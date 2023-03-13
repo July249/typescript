@@ -1,8 +1,8 @@
 {
   /**
-   * Type Inference
+   * Type Inference (타입 추론)
    */
-  let text = "hello"; // 별도로 타입을 명시하지 않아도 에러가 안나옴
+  let text = 'hello'; // 별도로 타입을 명시하지 않아도 에러가 안나옴
   // text = 1; // 선언함과 동시에 문자열을 할당해서 TypeScript가 알아서 추론함
 
   // function print(message) {
@@ -12,6 +12,6 @@
     // function print(message = 'hello') { // default 값을 지정하여 암묵적으로 추론할 수 있게 해주는 것도 가능
     console.log(message);
   }
-  print("hello");
+  print('hello');
   // print(1);
 }
