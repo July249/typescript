@@ -93,20 +93,19 @@
     }
   }
 
-  const machine = new CaffeLatteMachine(23, '123wfwef4341-14');
-  console.log(machine); // CaffeLatteMachine { coffeeBeans: 23 }
-  machine.makeCoffee(2);
-  // grinding beans for 2
-  // Heating up... 🔥
-  // Pulling 2 shots ... ☕️
-  machine.fillCoffeeBeans(23);
-  machine.clean(); // Cleaning the machine ... 🧼
+  // 다형성의 장점 => 부모클래스의 공통되는 API를 배열 형태로 돌면서 클래스의 구분 없이 사용할 수 있다는 점!
 
-  const machine2 = new SweetCoffeeMachine(23);
-  console.log(machine2);
-  machine2.makeCoffee(2);
-  // grinding beans for 2
-  // eating up... 🔥
-  // Pulling 2 shots ... ☕️
-  // Adding Sugar ... 🧊
+  const machines: CoffeeMaker[] = [
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, '12'),
+    new SweetCoffeeMachine(16),
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, '12'),
+    new SweetCoffeeMachine(16),
+  ];
+
+  machines.forEach((machine) => {
+    console.log('-----------------------------------');
+    machine.makeCoffee(1);
+  });
 }
