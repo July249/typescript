@@ -34,23 +34,23 @@
     console.log(lastName);
   }
 
-  printName1("Steve", "Jobs");
-  printName1("Ellie", undefined); // Optional Type을 사용하는 경우에는 두번째 인자에 대한 값을 넣어 주어야 한다.
-  printName1("Anna", undefined);
+  printName1('Steve', 'Jobs');
+  printName1('Ellie', undefined); // Optional Type을 사용하는 경우에는 두번째 인자에 대한 값을 넣어 주어야 한다.
+  printName1('Anna', undefined);
 
-  // Optional Parameter (?)
+  // Optional Parameter (?) => 하나의 인자만 전달해도 됨
   function printName2(firstName: string, lastName?: string) {
     console.log(firstName);
     console.log(lastName);
   }
 
-  printName2("Steve", "Jobs");
-  printName2("Ellie");
-  printName2("Anna");
+  printName2('Steve', 'Jobs');
+  printName2('Ellie'); // Ellie undefined
+  printName2('Anna'); // Anna undefined
 
   // Default parameter
-  function printMessage(message: string = "default message") {
-    console.log(message);
+  function printMessage(message: string = 'default message') {
+    console.log(message); // default message
   }
 
   printMessage(); // 'default message'
