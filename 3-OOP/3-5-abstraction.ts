@@ -10,7 +10,13 @@
     makeCoffee(shots: number): CoffeeCup;
   }
 
-  class CoffeeMachine implements CoffeeMaker {
+  interface CommercialCoffeeMaker {
+    makeCoffee(shots: number): CoffeeCup;
+    fillCoffeeBeans(beans: number): void;
+    clean(): void;
+  }
+
+  class CoffeeMachine implements CoffeeMaker, CommercialCoffeeMaker {
     private static BEANS_GRAM_PER_SHOT: number = 7;
     private coffeeBeans: number = 0;
 
@@ -27,6 +33,10 @@
         throw new Error('value for beans should be greater than 0');
       }
       this.coffeeBeans += beans;
+    }
+
+    clean(): void {
+      console.log('Cleaning the machine ... 🧼');
     }
 
     private grindBeans(shots: number) {
@@ -66,6 +76,11 @@
 
   const espresso2: CoffeeMaker = CoffeeMachine.makeMachine(12);
   espresso2.makeCoffee(14); // espresso2는 CoffeeMaker interface 규약을 따르므로, interface에서 정의하지 않은 fillCoffeeBeans 메서드는 사용할 수 없음
+
+  const espresso3: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
+  espresso3.makeCoffee(2);
+  espresso3.fillCoffeeBeans(23);
+  espresso3.clean();
 }
 
 // [캡슐화와 추상화]
