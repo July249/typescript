@@ -1,6 +1,7 @@
 {
   /**
    * Intersection Type: &
+   * => 다양한 타입들을 묶어서 하나로 사용할 수 있음
    */
 
   type Student = {
@@ -18,7 +19,7 @@
   }
 
   internWork({
-    name: "tom",
+    name: 'tom',
     score: 1,
     employeeId: 123,
     work: () => {},
