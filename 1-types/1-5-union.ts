@@ -2,11 +2,11 @@
   /**
    * Union Types: OR
    */
-  type Direction = "left" | "right" | "up" | "down";
+  type Direction = 'left' | 'right' | 'up' | 'down';
   function move(direction: Direction) {
     console.log(direction);
   }
-  move("down"); // <= Direction 타입에서만 정할 수 있다.
+  move('down'); // <= Direction 타입에서만 정할 수 있다.
 
   type TileSize = 8 | 16 | 32;
   const tile: TileSize = 16; // <= TileSize 타입에서만 정할 수 있다.
@@ -18,7 +18,7 @@
     };
   };
   type FailState = {
-    reason: String;
+    reason: string;
   };
   type LoginState = SuccessState | FailState;
 
