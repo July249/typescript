@@ -81,16 +81,12 @@
   }
 
   class SweetCoffeeMachine extends CoffeeMachine {
-    getSugar() {
-      console.log('Getting some sugar... 🍬');
+    constructor(private beans: number, private sugar: AutomaticSugarMixer) {
+      super(beans);
     }
     makeCoffee(shots: number): CoffeeCup {
       const coffee = super.makeCoffee(shots);
-      this.getSugar();
-      return {
-        ...coffee,
-        hasSugar: true,
-      };
+      return this.sugar.addSugar(coffee);
     }
   }
 
