@@ -60,11 +60,22 @@
     get fullName(): string {
       return `${this.firstName} ${this.lastName}`;
     }
+    private myAge = 4;
+    get age() {
+      return this.myAge;
+    }
+    set age(num: number) {
+      this.myAge = num;
+    }
 
     constructor(private firstName: string, private lastName: string) {}
   }
 
   const user = new User('Steve', 'Jobs');
+  console.log(user.age); // 4
+  user.age = 6;
+  console.log(user.age); // 6
+
   console.log(user.fullName); // Steve Jobs
   // user.firstName = 'Ellie'; => private이므로 이제 접근 못함
   console.log(user.fullName); // Steve Jobs => firstName이 변경되지 않음 => getter를 사용하니까 이제 "Ellie Jobs"가 출력됨
