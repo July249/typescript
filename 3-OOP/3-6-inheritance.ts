@@ -66,6 +66,9 @@
   }
 
   class CaffeLatteMachine extends CoffeeMachine {
+    constructor(beans: number, public readonly serialNumber: string) {
+      super(beans);
+    }
     private steamMilk(): void {
       console.log('Steaming some milk ... 🥛');
     }
@@ -77,7 +80,7 @@
     }
   }
 
-  const machine = new CaffeLatteMachine(23);
+  const machine = new CaffeLatteMachine(23, '123wfwef4341-14');
   console.log(machine); // CaffeLatteMachine { coffeeBeans: 23 }
   machine.makeCoffee(2);
   // grinding beans for 2
