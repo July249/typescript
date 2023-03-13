@@ -6,20 +6,22 @@
   };
 
   class CoffeeMachine {
-    static BEANS_GRAM_PER_SHOT: number = 7; // class level
-    coffeeBeans: number = 0; // instance (object) level
+    static BEANS_GRAM_PER_SHOT: number = 7; // class level에서만 사용됨 => object마다 생성되거나 사용되지 않음 => 메모리 낭비가 없음
+    coffeeBeans: number = 0; // instance (object) level에서 사용됨
 
     constructor(coffeeBeans: number) {
       this.coffeeBeans = coffeeBeans;
     }
 
+    // class 내부의 어떠한 속성값도 필요하지 않음
+    // new CoffeeMachine으로 하지 않아도 instance를 생성할 수 있음
     static makeMachine(coffeeBeans: number): CoffeeMachine {
       return new CoffeeMachine(coffeeBeans);
     }
 
     makeCoffee(shots: number): CoffeeCup {
       if (this.coffeeBeans < shots * CoffeeMachine.BEANS_GRAM_PER_SHOT) {
-        throw new Error("Not enough coffee beans!");
+        throw new Error('Not enough coffee beans!');
       }
       this.coffeeBeans -= shots * CoffeeMachine.BEANS_GRAM_PER_SHOT;
       return {
