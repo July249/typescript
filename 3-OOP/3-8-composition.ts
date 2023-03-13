@@ -118,6 +118,8 @@
     }
   }
 
+  // 위임을 이용하면 CheapMilkSteamer과 AutomaticSugarMixer 클래스와 스파게티처럼 꼬인다.
+  // 클래스는 꼬이지 않게 만드는 것이 중요하다! => 현재 코드는 냄새가 난다!
   class SweetLatteMachine extends CoffeeMachine {
     constructor(
       private beans: number,
