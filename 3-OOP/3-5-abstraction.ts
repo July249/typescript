@@ -1,4 +1,4 @@
-// Abstraction
+// Abstraction, Interface
 {
   type CoffeeCup = {
     shots: number;
@@ -69,18 +69,43 @@
     }
   }
 
-  const espresso: CoffeeMachine = CoffeeMachine.makeMachine(32);
-  espresso.fillCoffeeBeans(32); // espresso에 많은 함수가 있음 => 헷갈림 => abstraction이 필요함 => 심플하게 만들어줌
-  // => 따라서 불필요한 메서드는 private를 지정해줌
-  espresso.makeCoffee(2);
+  class AmateurUser {
+    constructor(private machine: CoffeeMaker) {}
+    makeCoffee() {
+      const coffee = this.machine.makeCoffee(2);
+      console.log(coffee);
+    }
+  }
 
-  const espresso2: CoffeeMaker = CoffeeMachine.makeMachine(12);
-  espresso2.makeCoffee(14); // espresso2는 CoffeeMaker interface 규약을 따르므로, interface에서 정의하지 않은 fillCoffeeBeans 메서드는 사용할 수 없음
+  class ProBarista {
+    constructor(private machine: CommercialCoffeeMaker) {}
+    makeCoffee() {
+      const coffee = this.machine.makeCoffee(2);
+      console.log(coffee);
+      this.machine.fillCoffeeBeans(45);
+      this.machine.clean();
+    }
+  }
 
-  const espresso3: CommercialCoffeeMaker = CoffeeMachine.makeMachine(32);
-  espresso3.makeCoffee(2);
-  espresso3.fillCoffeeBeans(23);
-  espresso3.clean();
+  const maker: CoffeeMachine = CoffeeMachine.makeMachine(32);
+  const amateur = new AmateurUser(maker);
+  const pro = new ProBarista(maker);
+
+  amateur.makeCoffee();
+  // grinding beans for 2
+  // Heating up... 🔥
+  // Pulling 2 shots ... ☕️
+  // { shots: 2, hasMilk: false }
+  pro.makeCoffee();
+  //   grinding beans for 2
+  // Heating up... 🔥
+  // Pulling 2 shots ... ☕️
+  // { shots: 2, hasMilk: false }
+  // Cleaning the machine ... 🧼
+
+  // point
+  // 동일한 object의 instance일지라도 두 가지의 Interface를 가지고 있기 때문에
+  // class 보다 좁은 범위의 interface에서 규약된 API만 사용할 수 있게 된다.
 }
 
 // [캡슐화와 추상화]
