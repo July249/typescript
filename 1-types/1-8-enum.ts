@@ -45,7 +45,7 @@
 
   let day: Days = Days.Saturday;
   day = Days.Tuesday;
-  day = 10; // ?? => enum을 사용하면 타입이 정확하게 보장되지 않는다는 이슈가 있음
+  day = 10; // ?? => 다른 타입으로 정의할 수 있음 => enum을 사용하면 타입이 정확하게 보장되지 않는다는 이슈가 있음
   console.log(day); // 5
 
   // Remark: enum을 사용할 수 밖에 없는 경우
