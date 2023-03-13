@@ -118,5 +118,33 @@
     }
   }
 
-  class SweetLatteMachine extends CoffeeMachine {}
+  class SweetLatteMachine extends CoffeeMachine {
+    constructor(
+      private beans: number,
+      private milk: CheapMilkSteamer,
+      private sugar: AutomaticSugarMixer
+    ) {
+      super(beans);
+    }
+
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots);
+      const sugarAdded = this.sugar.addSugar(coffee);
+      return this.milk.makeMilk(sugarAdded);
+    }
+  }
+
+  const machines: CoffeeMaker[] = [
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, '12'),
+    new SweetCoffeeMachine(16),
+    new CoffeeMachine(16),
+    new CaffeLatteMachine(16, '12'),
+    new SweetCoffeeMachine(16),
+  ];
+
+  machines.forEach((machine) => {
+    console.log('-----------------------------------');
+    machine.makeCoffee(1);
+  });
 }
