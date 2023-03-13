@@ -65,7 +65,17 @@
     }
   }
 
-  class CaffeLatteMachine extends CoffeeMachine {}
+  class CaffeLatteMachine extends CoffeeMachine {
+    private steamMilk(): void {
+      console.log('Steaming some milk ... 🥛');
+    }
+    // CoffeeMachine에는 없는 기능을 추가하는 makeCoffee API 제작 => over-writing
+    makeCoffee(shots: number): CoffeeCup {
+      const coffee = super.makeCoffee(shots); // 기본적인 과정은 동일하므로 그대로 상속
+      this.steamMilk(); // 우유만 추가함
+      return { ...coffee, hasMilk: true };
+    }
+  }
 
   const machine = new CaffeLatteMachine(23);
   console.log(machine); // CaffeLatteMachine { coffeeBeans: 23 }
